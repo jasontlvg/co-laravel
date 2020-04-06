@@ -1,0 +1,50 @@
+//*{
+//    font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif !important;
+//}
+.contenedor{
+    width: 100vw !important;
+    margin-bottom: 1em;
+    &--acciones{
+        h2{
+            font-size: 1em;
+        }
+        margin-bottom: 1em;
+    }
+
+    &--titulo{
+        width: 100%;
+        text-align: center;
+        font-size: 2em !important;
+        margin: 0;
+
+
+    }
+}
+
+
+//
+.columna{
+    margin-right: 1em;
+    //width: 155px;
+    display: inline-block;
+    .titulo{
+        margin: 0;
+        font-weight: bold;
+        font-size: 1em;
+    }
+
+    .descripcion{
+        margin: 0;
+        color:#157786;
+        font-size: 1.3em;
+
+    }
+}
+
+
+*{
+    font-size: 1em !important;
+}
+
+
+

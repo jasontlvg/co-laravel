@@ -1,0 +1,12 @@
+"id";"migration";"batch"
+1;"2013_07_09_061637_create_departamentos_table";1
+2;"2014_10_12_000000_create_users_table";1
+3;"2014_10_12_100000_create_password_resets_table";1
+4;"2019_03_15_054522_create_admins_table";1
+5;"2019_07_09_063033_create_empresa_table";1
+6;"2019_07_16_065852_create_respuestas_table";1
+7;"2019_08_03_032116_create_encuestas_table";1
+8;"2019_08_03_032303_create_preguntas_table";1
+9;"2019_08_03_032400_create_encuesta_pregunta_table";1
+11;"2019_08_03_032533_create_resultados_table";1
+12;"2019_08_03_032512_create_estados_table";2

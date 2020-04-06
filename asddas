@@ -1,0 +1,1 @@
+geministorm/app/Http/Controllers/Auth/AdminLoginController@showLoginForm: En ese metodo esta la logica para que, cuando entremos al login del administrador, no se muestre si el administrador ya esta logueado
