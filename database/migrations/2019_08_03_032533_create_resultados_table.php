@@ -28,6 +28,10 @@ class CreateResultadosTable extends Migration
             $table->unsignedBigInteger('empleado_id');
             $table->foreign('empleado_id')->references('id')->on('users')->onDelete('cascade');
 
+            $table->bigInteger('encuesta');
+            $table->bigInteger('turno');
+
+
 
             $table->timestamps();
         });

@@ -13,8 +13,8 @@ class EncuestaPreguntaSeeder extends Seeder
     public function run()
     {
 
-        $desde= 59;
-        $hasta=79;
+        $desde= 1;
+        $hasta=1;
 
         for($i= $desde; $i<=$hasta; $i++){
             $e= new EncuestaPregunta;

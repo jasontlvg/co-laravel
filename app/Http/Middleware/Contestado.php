@@ -17,12 +17,13 @@ class Contestado
      */
     public function handle($request, Closure $next)
     {
-        $id=$request->encuesta;
-        $estado=Estado::where(['encuesta_id'=>$id,'empleado_id'=>Auth::id()])->first();
-        if($estado->contestado){
-            return redirect(route('home'));
-        }else{
-            return $next($request);
-        }
+        return $next($request);
+//        $id=$request->encuesta;
+//        $estado=Estado::where(['encuesta_id'=>$id,'empleado_id'=>Auth::id()])->first();
+//        if($estado->contestado){
+//            return redirect(route('home'));
+//        }else{
+//            return $next($request);
+//        }
     }
 }

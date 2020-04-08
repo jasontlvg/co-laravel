@@ -17,9 +17,13 @@ class CreateDepartamentosTable extends Migration
             $table->bigIncrements('id');
 
             $table->string('nombre');
+
             $table->string('clave');
 
             $table->string('empresa')->nullable();
+
+            $table->bigInteger('encuesta')->default(1); // Numero de encuesta
+            $table->bigInteger('turno')->default(1); // Numero de encuesta
 
             $table->timestamps();
         });

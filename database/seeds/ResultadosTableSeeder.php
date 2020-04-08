@@ -14,7 +14,10 @@ class ResultadosTableSeeder extends Seeder
     {
         $numeroDeEncuestas=5;
         $desde=1;
-        $hasta=100;
+        $hasta=1;
+
+        $encuestaX=1; // Corresponde a la columna encuesta de la tabla resultados
+        $turno=1;
 
         for($empleado=$desde;$empleado<=$hasta;$empleado++){
             for($encuesta=1;$encuesta<=$numeroDeEncuestas;$encuesta++){
@@ -26,6 +29,10 @@ class ResultadosTableSeeder extends Seeder
                         $resultado->pregunta_id=$p;
                         $resultado->respuesta_id=$rFactory->r;
                         $resultado->empleado_id=$empleado;
+
+                        $resultado->encuesta=$encuestaX;
+                        $resultado->turno=$turno;
+
                         $resultado->save();
                     }
                 }elseif($encuesta==2){
@@ -36,6 +43,10 @@ class ResultadosTableSeeder extends Seeder
                         $resultado->pregunta_id=$p;
                         $resultado->respuesta_id=$rFactory->r;
                         $resultado->empleado_id=$empleado;
+
+                        $resultado->encuesta=$encuestaX;
+                        $resultado->turno=$turno;
+
                         $resultado->save();
                     }
                 }elseif($encuesta==3){
@@ -46,6 +57,10 @@ class ResultadosTableSeeder extends Seeder
                         $resultado->pregunta_id=$p;
                         $resultado->respuesta_id=$rFactory->r;
                         $resultado->empleado_id=$empleado;
+
+                        $resultado->encuesta=$encuestaX;
+                        $resultado->turno=$turno;
+
                         $resultado->save();
                     }
                 }elseif($encuesta==4){
@@ -56,6 +71,11 @@ class ResultadosTableSeeder extends Seeder
                         $resultado->pregunta_id=$p;
                         $resultado->respuesta_id=$rFactory->r;
                         $resultado->empleado_id=$empleado;
+
+                        $resultado->encuesta=$encuestaX;
+                        $resultado->turno=$turno;
+
+
                         $resultado->save();
                     }
                 }elseif($encuesta==5){
@@ -66,6 +86,10 @@ class ResultadosTableSeeder extends Seeder
                         $resultado->pregunta_id=$p;
                         $resultado->respuesta_id=$rFactory->r;
                         $resultado->empleado_id=$empleado;
+
+                        $resultado->encuesta=$encuestaX;
+                        $resultado->turno=$turno;
+
                         $resultado->save();
                     }
                 }

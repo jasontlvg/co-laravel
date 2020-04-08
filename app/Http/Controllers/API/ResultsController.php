@@ -9,6 +9,8 @@ use App\Departamento;
 use App\Resultado;
 use App\User;
 use App\Indicador;
+use App\Classes\Dashboard;
+use App\Classes\EncuestaDash;
 class ResultsController extends Controller
 {
     /**
@@ -116,9 +118,9 @@ class ResultsController extends Controller
     {
         //
     }
-    public function getData($departamento)
+    public function getData($departamento,$encuestaRetro,$turno)
     {
-
+//        return $encuestaRetro;
         $count=0;
         $encuestasDisponibles= Resultado::whereHas('empleado',function($query) use ($departamento) {
             $query->where('departamento_id',$departamento);
@@ -147,10 +149,22 @@ class ResultsController extends Controller
                 $count++;
             }
         }
+
+
+
+
+
         // Obteniendo las respuestas de todas las Encuestas Disponiles del Departamento Seleccionado
         $resultadosEncuestas= Resultado::whereHas('empleado',function ($query) use ($departamento){
             $query->where('departamento_id',$departamento);
-        })->get();
+        })->where('encuesta',$encuestaRetro)->where('turno',$turno)->get();
+
+//        return $resultadosEncuestas;
+
+
+
+
+
         foreach ($resultadosEncuestas as $resultado){
             $encuestaId= $resultado->encuesta_id;
             $preguntaId= $resultado->pregunta_id;
@@ -236,6 +250,81 @@ class ResultsController extends Controller
     {
         $indicadores= Indicador::where('encuesta_id', $encuestaId)->get();
         return $indicadores;
+    }
+
+    public function getDashboard(Request $request) // Si el parametro esta x.com/1/2 nadamas se declara como argumento
+                                                   // Si se envia como params usando axios, declaramos Request $request
+    {
+        $dashboard= new Dashboard();
+
+        $dashboard->setAuth(true);
+//        $dashboard->setEncuestas(1);
+
+
+
+        $departamento_id = $request->get('departamento_id');
+        $encuestas= Departamento::find($departamento_id)->encuesta; // Retorna el puro numero
+//        return $encuestas;
+
+        for($i=1; $i<=$encuestas; $i++){
+            // Aqui dentro me tengo que preocupar por los turnos, cada iteracion es una
+            // encuesta hecha 1,2,3
+            if($i == $encuestas){
+                $encuestaDash= new EncuestaDash();
+                $encuestaDash->setEncuesta($i);
+                $numeroDeEmpleadosDelDepartamento= User::where('departamento_id', $departamento_id)->count();
+
+                if($numeroDeEmpleadosDelDepartamento==0){
+                    $dashboard->setEncuestas($encuestaDash);
+                    return response()->json($dashboard);
+                }
+
+                $enTurno2= Departamento::find($departamento_id)->turno;
+
+                if($enTurno2==2){
+                    $encuestaDash->setEnTurno2(true);
+                }
+
+//                $resultados= Resultado::whereHas('empleado',function($query) use ($departamento_id) {
+//                    $query->where('departamento_id',$departamento_id);
+//                })->where('encuesta',1)->where('turno',1)->get();
+
+
+                $resultadosTurno1= Resultado::whereHas('empleado',function($query) use ($departamento_id) {
+                    $query->where('departamento_id',$departamento_id);
+                })->where('encuesta',$i)->where('turno',1)->count();
+
+
+                if($resultadosTurno1 == 79*$numeroDeEmpleadosDelDepartamento){
+                    $encuestaDash->setTurno1(true);
+                    // Turno 1 esta listo, por lo tanto evaluamos el Turno 2
+                    $resultadosTurno2= Resultado::whereHas('empleado',function($query) use ($departamento_id) {
+                        $query->where('departamento_id',$departamento_id);
+                    })->where('encuesta',$i)->where('turno',2)->count();
+                    // ($resultadosTurno1/79) es el numero de empleados que contestaron la encuesta 1
+                    if($resultadosTurno2 == ($resultadosTurno1/79)*79){
+                        $encuestaDash->setTurno2(true);
+                    }
+
+                }else{
+                    $encuestaDash->setTurno1(false);
+                    // El turno 1 no esta listo, por default el turno 2 tampoco,
+                    // predeterminadamente el turno 2 esta en false, por lo tanto
+                    // no hacemos nada
+                }
+
+                $dashboard->setEncuestas($encuestaDash);
+
+            }else{
+                $encuestaDash= new EncuestaDash();
+                $encuestaDash->setEncuesta($i);
+                $encuestaDash->setTurno1(true);
+                $encuestaDash->setTurno2(true);
+                $encuestaDash->setEnTurno2(true);
+                $dashboard->setEncuestas($encuestaDash);
+            }
+        }
+        return response()->json($dashboard);
     }
 
 
