@@ -33,17 +33,18 @@ class EncuestaController extends Controller
 
     public function store(Request $request,$id)
     {
-        //
-        $encuestaNumero= User::find(Auth::id())->departamento->encuesta;
-        $turno= Resultado::where('empleado_id', Auth::id())->where('encuesta_id',$id)->where('encuesta',$encuestaNumero)->max('encuesta');
+        $user= User::find(Auth::id());
+        $encuestaNumero= $user->departamento->encuesta;
+        $turno= $user->departamento->turno;
 
-        if($turno == null){
-            $turno=1;
-//            return 'El turno es igual a 1';
-        }else{
-            $turno=2;
-//            return 'El turno es igual a 2';
-        }
+
+//        $turno= Resultado::where('empleado_id', Auth::id())->where('encuesta_id',$id)->where('encuesta',$encuestaNumero)->max('encuesta');
+
+//        if($turno == null){
+//            $turno=1;
+//        }else{
+//            $turno=2;
+//        }
 
 
         $preguntas=EncuestaPregunta::where('encuesta_id',$id)->select('pregunta_id')->get();

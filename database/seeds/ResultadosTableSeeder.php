@@ -13,11 +13,11 @@ class ResultadosTableSeeder extends Seeder
     public function run()
     {
         $numeroDeEncuestas=5;
-        $desde=1;
-        $hasta=1;
+        $desde=3; // El ide del usuario
+        $hasta=3; // El id del usuario
 
-        $encuestaX=1; // Corresponde a la columna encuesta de la tabla resultados
-        $turno=1;
+        $encuestaX=2; // Corresponde a la columna encuesta de la tabla resultados
+        $turno=2;
 
         for($empleado=$desde;$empleado<=$hasta;$empleado++){
             for($encuesta=1;$encuesta<=$numeroDeEncuestas;$encuesta++){

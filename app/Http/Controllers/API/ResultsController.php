@@ -26,6 +26,7 @@ class ResultsController extends Controller
     }
     public function encuestasDisponibles($id) // Las encuestas disponibles de ese departamento (recuerda que, digamos, para entender mejor, hay un solo empleado de ese departamento, y ese empleado nomas contesto una encuesta, entonces, solo hay resultados para esa encuesta, porque solo ese han contestado, no quiero traer todos las encuestas si no tienen resultados para ese departamento)
     {
+        // FUNCION DE V1 DEL PROGRAMA
         $idDepartamento=$id;
         $encuestasDisponibles=Resultado::whereHas('empleado',function($query) use ($idDepartamento) {
             $query->where('departamento_id',$idDepartamento);
@@ -50,6 +51,7 @@ class ResultsController extends Controller
      */
     public function show(Request $request)
     {
+        // FUNCION DE V1 DEL PROGRAMA, ACTUALMENTE NO SE USA
 //        return 'Hola';
 //        if($request->get('departamento_id') == 3){
 //            return 'Exito';
@@ -124,7 +126,7 @@ class ResultsController extends Controller
         $count=0;
         $encuestasDisponibles= Resultado::whereHas('empleado',function($query) use ($departamento) {
             $query->where('departamento_id',$departamento);
-        })->distinct()->select('encuesta_id')->with('encuesta')->get();
+        })->where('encuesta',$encuestaRetro)->where('turno',$turno)->distinct()->select('encuesta_id')->with('encuesta')->get();
         // Solo funciona en php, si tenemos tres encuestas disponibles, y la ultima encuesta tiene id=5
         // pues al buscar $resultados[5], apuntaremos a ese, pero si retornamos $resultados a JS, y los leemos
         // alla, pues como solo tenemos 3 encuestas disponibles (habiendo dejado $resultados[3] y $resultados[4])
@@ -154,17 +156,15 @@ class ResultsController extends Controller
 
 
 
-        // Obteniendo las respuestas de todas las Encuestas Disponiles del Departamento Seleccionado
+        // Obteniendo los resultados de todas las Encuestas Disponiles del Departamento Seleccionado
         $resultadosEncuestas= Resultado::whereHas('empleado',function ($query) use ($departamento){
             $query->where('departamento_id',$departamento);
         })->where('encuesta',$encuestaRetro)->where('turno',$turno)->get();
 
 //        return $resultadosEncuestas;
-
-
-
-
-
+        if(sizeof($resultadosEncuestas)==0){
+            return response()->json(0);
+        }
         foreach ($resultadosEncuestas as $resultado){
             $encuestaId= $resultado->encuesta_id;
             $preguntaId= $resultado->pregunta_id;
@@ -302,7 +302,10 @@ class ResultsController extends Controller
                         $query->where('departamento_id',$departamento_id);
                     })->where('encuesta',$i)->where('turno',2)->count();
                     // ($resultadosTurno1/79) es el numero de empleados que contestaron la encuesta 1
-                    if($resultadosTurno2 == ($resultadosTurno1/79)*79){
+
+
+//                    if($resultadosTurno2 == ($resultadosTurno1/79)*79){
+                    if($resultadosTurno2 == $numeroDeEmpleadosDelDepartamento*79){
                         $encuestaDash->setTurno2(true);
                     }
 

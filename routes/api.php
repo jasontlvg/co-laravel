@@ -34,4 +34,6 @@ Route::group(['prefix' => 'admin'], function(){
     Route::delete('api/results/{result}', 'API\ResultsController@destroy')->name('results.destroy'); // El mw que comprueba si el usuario ya contesta la encuesto esta declarado en el Controller
     Route::get('api/reactivar/{departamento}/{encuesta}', 'API\ResultsController@reactivarEncuesta')->name('results.reactivar'); // El mw que comprueba si el usuario ya contesta la encuesto esta declarado en el Controller
     Route::get('api/indicadores/{encuesta}', 'API\ResultsController@getIndicador')->name('results.indicadores'); //
+    Route::post('api/activate/feedback', 'API\ActivateSurveysController@activateFeedback')->name('activate.feedback'); //
+    Route::post('api/activate/survey', 'API\ActivateSurveysController@tryToActivateNewSurvey')->name('activate.survey'); //
 });
