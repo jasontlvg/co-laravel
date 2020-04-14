@@ -79,12 +79,15 @@ class ActivateSurveysController extends Controller
 
             // ($resultadosTurno1/79) es el numero de empleados que contestaron la encuesta 1
             if($resultadosTurno2 == 79*$numeroDeEmpleadosDelDepartamento){
-                $estados= Estado::whereHas('empleado', function ($query) use ($departamento_id){
-                    $query->where('departamento_id',$departamento_id);
-                })->update(['contestado' => 0]);
+
+//                return response()->json(1);
                 $departamento->encuesta= $encuesta+1;
                 $departamento->turno= 1;
                 $departamento->save();
+
+                $estados= Estado::whereHas('empleado', function ($query) use ($departamento_id){
+                    $query->where('departamento_id',$departamento_id);
+                })->update(['contestado' => 0]);
                 return response()->json(1);
             }
         }else{
