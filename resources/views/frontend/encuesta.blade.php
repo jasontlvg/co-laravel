@@ -53,15 +53,15 @@
 
     let btn= document.getElementById('boton')
 
-    btn.addEventListener('click', function () {
-        let totalQuestions= document.getElementsByClassName('pregunta').length
-        var array = []
-        var checkboxes = document.querySelectorAll('input[type=radio]:checked')
-        for (var i = 0; i < checkboxes.length; i++) {
-            array.push(checkboxes[i].value)
-        }
-        console.log(array)
-    })
+    // btn.addEventListener('click', function () {
+    //     let totalQuestions= document.getElementsByClassName('pregunta').length
+    //     var array = []
+    //     var checkboxes = document.querySelectorAll('input[type=radio]:checked')
+    //     for (var i = 0; i < checkboxes.length; i++) {
+    //         array.push(checkboxes[i].value)
+    //     }
+    //     console.log(array)
+    // })
 
 
 </script>
