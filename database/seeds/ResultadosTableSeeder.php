@@ -16,7 +16,7 @@ class ResultadosTableSeeder extends Seeder
         $desde=3; // El ide del usuario
         $hasta=3; // El id del usuario
 
-        $encuestaX=2; // Corresponde a la columna encuesta de la tabla resultados
+        $encuestaX=1; // Corresponde a la columna encuesta de la tabla resultados
         $turno=2;
 
         for($empleado=$desde;$empleado<=$hasta;$empleado++){

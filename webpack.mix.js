@@ -16,3 +16,6 @@ mix.js('resources/js/app.js', 'public/js')
 
 mix.js('resources/js/descargar.js', 'public/js')
     .sass('resources/sass/descargar.scss', 'public/css');
+
+mix.js('resources/js/reporteFinal.js', 'public/js')
+    .sass('resources/sass/reporteFinal.scss', 'public/css');

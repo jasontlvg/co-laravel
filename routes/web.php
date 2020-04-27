@@ -67,6 +67,7 @@ Route::group(['prefix' => 'admin'], function(){
     Route::get('resultados', 'ResultadosController@index')->name('resultados.index')->middleware('auth:admin');
 
     Route::get('resultados/reporte', 'ResultadosController@reporte')->name('resultados.reporte')->middleware('auth:admin');
+    Route::get('resultados/reportefinal', 'ResultadosController@reporteFinal')->name('resultados.reporteFinal')->middleware('auth:admin');
 
 
 });
