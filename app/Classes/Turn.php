@@ -10,5 +10,6 @@ class Turn
     var $departamento;
     var $encuestaMenor;
     var $encuestas=[];
+    var $encuesta;
 
 }

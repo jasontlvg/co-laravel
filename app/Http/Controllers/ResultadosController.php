@@ -146,7 +146,7 @@ class ResultadosController extends Controller
                 array_push($f, $obj);
             }
         }
-
+        usort($f, function($a, $b) {return strcmp($a->media, $b->media);});
 //        return $f;
 
 //        return view('descargar', compact( 'departamento', 'encuesta', 'media_encuesta', 'f'));
@@ -155,8 +155,8 @@ class ResultadosController extends Controller
         return $pdf->download('reporte.pdf');
     }
 
-    function hola($arr){
-        return $arr= 1;
+    function hola(){
+        return 1222222;
     }
 
     public function reporteFinal(Request $request)
@@ -310,6 +310,9 @@ class ResultadosController extends Controller
                     }
                     $w++;
                 }
+//                dd($indicadoresForSurveyObj);
+                usort($indicadoresForSurveyObj, function($a, $b) {return strcmp($a->media, $b->media);}); // usort modifica directamente a $indicadoresForSurveyObj
+//                dd($indicadoresForSurveyObj);
                 // lo de abajo ya esta bien solo modifica lo de aqui dentro
                 $survey->indicadores= $indicadoresForSurveyObj;
                 array_push($encuestas, $survey);
@@ -337,13 +340,22 @@ class ResultadosController extends Controller
         }
 
 //        return $results[1]->media;
+        $results[0]->encuesta='Primera encuesta';
+        $results[1]->encuesta='Encuesta de retroalimentacion';
 
         $global= new ReporteGlobal();
         $global->mediaGlobal=round( ((($results[0]->media)+($results[1]->media))/2), 4 );
 
         $global->results= $results;
 
+        date_default_timezone_set('America/Tijuana');
+        $date = date('m/d/Y h:i:s a', time());
+        $empresa= Empresa::first();
+        $admin= Admin::where('id', Auth::id())->get();
 
-        return view('reporteFinal', compact('global'));
+//        return view('reporteFinal', compact('global', 'date', 'empresa', 'admin', 'departamento_name'));
+
+        $pdf= PDF::loadView('reporteFinal', compact('global', 'date', 'empresa', 'admin', 'departamento_name'));
+        return $pdf->download('reporte.pdf');
     }
 }

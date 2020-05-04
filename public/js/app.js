@@ -49489,16 +49489,28 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/sass/reporteFinal.scss":
+/*!******************************************!*\
+  !*** ./resources/sass/reporteFinal.scss ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ 0:
-/*!*********************************************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resources/sass/descargar.scss ***!
-  \*********************************************************************************************/
+/*!********************************************************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resources/sass/descargar.scss ./resources/sass/reporteFinal.scss ***!
+  \********************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/shieldvg/Documents/laravel_projects/geministorm/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /home/shieldvg/Documents/laravel_projects/geministorm/resources/sass/app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! /home/shieldvg/Documents/laravel_projects/geministorm/resources/sass/descargar.scss */"./resources/sass/descargar.scss");
+__webpack_require__(/*! /home/shieldvg/Documents/laravel_projects/co-laravel/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /home/shieldvg/Documents/laravel_projects/co-laravel/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/shieldvg/Documents/laravel_projects/co-laravel/resources/sass/descargar.scss */"./resources/sass/descargar.scss");
+module.exports = __webpack_require__(/*! /home/shieldvg/Documents/laravel_projects/co-laravel/resources/sass/reporteFinal.scss */"./resources/sass/reporteFinal.scss");
 
 
 /***/ })

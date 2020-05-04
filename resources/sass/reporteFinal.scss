@@ -1,0 +1,116 @@
+.contenedor{
+    width: 100vw !important;
+    margin-bottom: 1em;
+    &--acciones{
+        h2{
+            font-size: 1em;
+        }
+        margin-bottom: 1em;
+    }
+
+    &--titulo{
+        width: 100%;
+        text-align: center;
+        font-size: 2em !important;
+        margin: 0;
+
+
+    }
+}
+
+
+//
+.columna{
+    margin-right: 1em;
+    //width: 155px;
+    display: inline-block;
+    .titulo{
+        margin: 0;
+        font-weight: bold;
+        font-size: 1em;
+    }
+
+    .descripcion{
+        margin: 0;
+        color:#157786;
+        font-size: 1.3em;
+
+    }
+}
+
+.page-break {
+    page-break-after: always;
+}
+
+.caja{
+    width: 100%;
+    &__container{
+        width: 500px;
+        //background: red;
+        margin: 0 auto;
+        text-align: center;
+    }
+}
+
+.reporteFinal{
+    margin-bottom: 4em;
+}
+
+//.logo{
+//    //margin-bottom: 3em;
+//    &__logo-container{
+//        width: 70px;
+//        height: 70px;
+//        color: white;
+//        margin: 0 auto;
+//        background-color: #db0425;
+//        border-radius: 50%;
+//        text-align: center;
+//        position: relative;
+//        &__title{
+//            font-size: 1.3em;
+//            position: absolute;
+//            top: 50%;
+//            left: 50%;
+//            transform: translate(-50%, -50%);
+//        }
+//    }
+//
+//    &__title{
+//        text-align: center;
+//        font-size: 1.5em;
+//    }
+//
+//}
+
+.logo{
+    width: 100%;
+    margin-bottom: 4em;
+    &__logo-container{
+        margin: 0 auto;
+        //background: red;
+        width: 20%;
+        img{
+            display: block;
+            max-width: 100%;
+            border: 0;
+        }
+    }
+}
+
+
+.aside__logo__container__symbol__title{
+    //width: 70px;
+    //height: 70px;
+    //color: white;
+    //margin: 0;
+    //background-color: #db0425;
+    //border-radius: 50%;
+    //text-align: center;
+    //
+    ////display: flex;
+    ////justify-content: center;
+    ////align-items: center;
+    //
+    //font-size: 1.3em;
+}

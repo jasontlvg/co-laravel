@@ -10,8 +10,6 @@
     <link href="{{ asset('css/descargar.css') }}" rel="stylesheet">
 </head>
 <body>
-{{--    <h1></h1>--}}
-
     <div class="contenedor contenedor--titulo">
         <h1>{{$empresa->nombre}}</h1>
     </div>

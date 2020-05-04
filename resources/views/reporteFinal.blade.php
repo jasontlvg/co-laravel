@@ -7,22 +7,148 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
+    <link href="{{ asset('css/reporteFinal.css') }}" rel="stylesheet">
 </head>
 <body>
     <div class="main">
-        <h1>Media Global: {{$global->mediaGlobal}}</h1>
-        @foreach($global->results as $turno)
-            {{$turno->media}}
-            {{$turno->encuestaMenor}}
+        <div class="logo">
+            <div class="logo__logo-container">
+{{--                <h2 class="logo__logo-container__title">4P'S</h2>--}}
+                <img src="{{ public_path('img/logo3.jpg') }}" alt="">
+            </div>
+{{--            <h1 class="logo__title">Changeover</h1>--}}
+        </div>
+        <div class="caja">
+{{--            <div class="row m-0">--}}
+{{--                <div class="col p-0">--}}
+{{--                    <p class="h4" class="">Departamento: <span class="text-info">{{$departamento_name}}</span></p>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+
+{{--            <div class="row m-0">--}}
+{{--                <h1 class="h4">Media Global: <span class="text-info">{{$global->mediaGlobal}}</span></h1>--}}
+{{--            </div>--}}
+{{--            <div class="row m-0">--}}
+{{--                <div class="col p-0">--}}
+{{--                    <p class="h4" class="">Empresa: <span class="text-info">{{$empresa->nombre}}</span></p>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="row m-0">--}}
+{{--                <div class="col p-0">--}}
+{{--                    <p class="h4" class="">Fecha de impresion de reporte: <span class="text-info">{{$date}}</span></p>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="row m-0">--}}
+{{--                <div class="col p-0">--}}
+{{--                    <p class="h4" class="">Encuesta menor de Primera encuesta: <span class="text-info">{{$global->results[0]->encuestaMenor->encuesta->nombre}}</span></p>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="row m-0">--}}
+{{--                <div class="col p-0">--}}
+{{--                    <p class="h4" class="">Encuesta menor de Retroalimentacion : <span class="text-info">{{$global->results[1]->encuestaMenor->encuesta->nombre}}</span></p>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+
+            <h1 class="w-100 text-center h2 reporteFinal">Reporte Final</h1>
+            <div class="caja__container">
+                <div class="caja__container__title">
+                    <p class="h4" class="">Departamento: </p>
+                </div>
+                <div class="caja__container__value">
+                    <p class="h4 text-info">{{$departamento_name}}</p>
+                </div>
+            </div>
+
+            <div class="caja__container">
+                <div class="caja__container__title">
+                    <p class="h4" class="">Media Global: </p>
+                </div>
+                <div class="caja__container__value">
+                    <p class="h4 text-info">{{$global->mediaGlobal}}</p>
+                </div>
+            </div>
+
+            <div class="caja__container">
+                <div class="caja__container__title">
+                    <p class="h4" class="">Empresa: </p>
+                </div>
+                <div class="caja__container__value">
+                    <p class="h4 text-info">{{$empresa->nombre}}</p>
+                </div>
+            </div>
+
+            <div class="caja__container">
+                <div class="caja__container__title">
+                    <p class="h4" class="">Fecha de impresion de reporte:</p>
+                </div>
+                <div class="caja__container__value">
+                    <p class="h4 text-info">{{$date}}</p>
+                </div>
+            </div>
+
+            <div class="caja__container">
+                <div class="caja__container__title">
+                    <p class="h4" class="">Encuesta menor de Primera encuesta: </p>
+                </div>
+                <div class="caja__container__value">
+                    <p class="h4 text-info">{{$global->results[0]->encuestaMenor->encuesta->nombre}}</p>
+                </div>
+            </div>
+
+            <div class="caja__container">
+                <div class="caja__container__title">
+                    <p class="h4" class="">Encuesta menor de Retroalimentacion: </p>
+                </div>
+                <div class="caja__container__value">
+                    <p class="h4 text-info">{{$global->results[1]->encuestaMenor->encuesta->nombre}}</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="page-break"></div>
+
+    @foreach($global->results as $turno)
+{{--            {{$turno->media}}--}}
+{{--            {{$turno->encuestaMenor}}--}}
             <div class="box">
+                <h2 class="w-100 text-center mb-3" >{{$turno->encuesta}}</h2>
+                <div class="cont w-100 mb-3">
+                    <div class="row m-0">
+                        <div class="col p-0">
+                            <p class="h5">Media: <span class="text-info">{{$turno->media}}</span></p>
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col p-0">
+                            <p class="h5">Encuesta menor: <span class="text-info">{{$turno->encuestaMenor->encuesta->nombre}}</span></p>
+                        </div>
+                    </div>
+
+                    <div class="row m-0">
+                        <div class="col p-0">
+                            <p class="h5">Acciones de mejora para Changeover:</p>
+                        </div>
+                    </div>
+                </div>
                 @foreach($turno->encuestas as $encuesta)
                     <div class="encuesta">
-                        <h2>{{$encuesta->nombre}}</h2>
-                        <h3>{{$encuesta->media}}</h3>
+                        <div class="contenedor">
 
-                        <table class="ui celled table">
-                            <thead>
+                            <div class="columna">
+                                <p class="titulo">Factor</p>
+                                <p class="descripcion">{{$encuesta->nombre}}</p>
+                            </div>
+
+                            <div class="columna">
+                                <p class="titulo">Media</p>
+                                <p class="descripcion">{{$encuesta->media}}</p>
+                            </div>
+
+                        </div>
+
+                        <table class="table">
+                            <thead class="thead-dark">
                                 <tr>
                                     <th>Variable</th>
                                     <th>Recomendación</th>
@@ -41,6 +167,7 @@
                         </table>
 
                     </div>
+                    <div class="page-break"></div>
                 @endforeach
             </div>
         @endforeach

@@ -106,7 +106,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/shieldvg/Documents/laravel_projects/geministorm/resources/js/descargar.js */"./resources/js/descargar.js");
+module.exports = __webpack_require__(/*! /home/shieldvg/Documents/laravel_projects/co-laravel/resources/js/descargar.js */"./resources/js/descargar.js");
 
 
 /***/ })

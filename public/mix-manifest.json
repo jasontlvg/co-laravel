@@ -2,5 +2,7 @@
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
     "/css/descargar.css": "/css/descargar.css",
-    "/js/descargar.js": "/js/descargar.js"
+    "/css/reporteFinal.css": "/css/reporteFinal.css",
+    "/js/descargar.js": "/js/descargar.js",
+    "/js/reporteFinal.js": "/js/reporteFinal.js"
 }
