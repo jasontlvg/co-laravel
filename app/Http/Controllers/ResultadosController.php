@@ -135,7 +135,8 @@ class ResultadosController extends Controller
         $promediosBajos= [];
         for($i= 0; $i<sizeof($promedios); $i++){
 
-            if($promedios[$i] <= 2.9999){
+//            if($promedios[$i] <= 2.9999){
+            if($promedios[$i] <= 3){
                 array_push($promediosBajos,$promedios[$i]);
                 $obj= new PreguntaObj();
 
@@ -301,7 +302,8 @@ class ResultadosController extends Controller
                 $indicadoresForSurveyObj= [];  // $indicadores del objeto survey
                 $w=0;
                 foreach($turno->promediosPorPregunta[$q+1] as $promedio){
-                    if($promedio <= 2.9999){
+//                    if($promedio <= 2.9999){
+                    if($promedio <= 3){
                         $indicador= new Indicator();
                         $indicador->variable= $filteredVariables[$w];
                         $indicador->recomendacion= $filteredIndicadores[$w];
