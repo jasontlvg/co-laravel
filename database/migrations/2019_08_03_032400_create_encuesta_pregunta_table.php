@@ -18,7 +18,6 @@ class CreateEncuestaPreguntaTable extends Migration
             $table->foreign('encuesta_id')->references('id')->on('encuestas')->onDelete('cascade');
             $table->unsignedBigInteger('pregunta_id');
             $table->foreign('pregunta_id')->references('id')->on('preguntas')->onDelete('cascade');
-            $table->timestamps();
         });
     }
 

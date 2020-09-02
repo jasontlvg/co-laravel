@@ -63,7 +63,6 @@ class ActivateSurveysController extends Controller
 
         $encuesta= $departamento->encuesta;
         $turno= $departamento->turno;
-//        return $turno;
         if($turno==2){
             $numeroDeEmpleadosDelDepartamento= User::where('departamento_id', $departamento_id)->count();
 
@@ -93,8 +92,5 @@ class ActivateSurveysController extends Controller
         }else{
             return 'Aun se esta contestando el turno 1';
         }
-
-//        return $departamento;
-//        return 'Hola';
     }
 }

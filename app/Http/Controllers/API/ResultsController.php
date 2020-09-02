@@ -252,23 +252,14 @@ class ResultsController extends Controller
         return $indicadores;
     }
 
-    public function getDashboard(Request $request) // Si el parametro esta x.com/1/2 nadamas se declara como argumento
-                                                   // Si se envia como params usando axios, declaramos Request $request
+    public function getDashboard(Request $request)
     {
         $dashboard= new Dashboard();
-
         $dashboard->setAuth(true);
-//        $dashboard->setEncuestas(1);
-
-
-
         $departamento_id = $request->get('departamento_id');
-        $encuestas= Departamento::find($departamento_id)->encuesta; // Retorna el puro numero
-//        return $encuestas;
+        $encuestas= Departamento::find($departamento_id)->encuesta;
 
         for($i=1; $i<=$encuestas; $i++){
-            // Aqui dentro me tengo que preocupar por los turnos, cada iteracion es una
-            // encuesta hecha 1,2,3
             if($i == $encuestas){
                 $encuestaDash= new EncuestaDash();
                 $encuestaDash->setEncuesta($i);
@@ -285,15 +276,9 @@ class ResultsController extends Controller
                     $encuestaDash->setEnTurno2(true);
                 }
 
-//                $resultados= Resultado::whereHas('empleado',function($query) use ($departamento_id) {
-//                    $query->where('departamento_id',$departamento_id);
-//                })->where('encuesta',1)->where('turno',1)->get();
-
-
                 $resultadosTurno1= Resultado::whereHas('empleado',function($query) use ($departamento_id) {
                     $query->where('departamento_id',$departamento_id);
                 })->where('encuesta',$i)->where('turno',1)->count();
-
 
                 if($resultadosTurno1 == 79*$numeroDeEmpleadosDelDepartamento){
                     $encuestaDash->setTurno1(true);

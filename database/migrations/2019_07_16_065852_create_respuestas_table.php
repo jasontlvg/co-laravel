@@ -17,7 +17,6 @@ class CreateRespuestasTable extends Migration
             $table->bigIncrements('id');
             $table->string('respuesta');
             $table->integer('peso');
-            $table->timestamps();
         });
     }
 

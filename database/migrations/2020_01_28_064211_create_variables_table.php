@@ -18,7 +18,6 @@ class CreateVariablesTable extends Migration
             $table->string('nombre');
             $table->unsignedBigInteger('encuesta_id');
             $table->foreign('encuesta_id')->references('id')->on('encuestas')->onDelete('cascade');
-            $table->timestamps();
         });
     }
 

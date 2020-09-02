@@ -16,8 +16,9 @@
                 @foreach($respuestas as $respuesta)
                     <div class="field">
                         <div class="ui radio checkbox">
-                            <input type="radio" name="{{$p->id}}" value="{{$respuesta->id}}" class="cb">
-{{--                            <input type="radio" name="{{$p->id}}" value="{{$respuesta->id}}" checked>--}}
+{{--                            <input type="radio" name="{{$p->id}}" value="{{$respuesta->id}}" class="cb">--}}
+                            <input type="radio" name="{{$p->id}}" value="{{$respuesta->id}}" class="cb" checked>
+
                             <label>{{$respuesta->respuesta}}</label>
                         </div>
                     </div>
